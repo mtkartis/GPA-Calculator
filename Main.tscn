@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://LightThemeMain.tres" type="Theme" id=2]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 600.0
+margin_bottom = 900.0
+theme = ExtResource( 2 )
+
+[node name="UI" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -5.0
+theme = ExtResource( 2 )
+
+[node name="Scroll" type="ScrollContainer" parent="UI"]
+margin_right = 560.0
+margin_bottom = 875.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Layout" type="VBoxContainer" parent="UI/Scroll"]
+margin_right = 560.0
+margin_bottom = 128.0
+size_flags_horizontal = 7
+alignment = 1
+
+[node name="Header" type="VBoxContainer" parent="UI/Scroll/Layout"]
+margin_right = 560.0
+margin_bottom = 83.0
+size_flags_horizontal = 5
+
+[node name="GPALabel" type="Label" parent="UI/Scroll/Layout/Header"]
+margin_left = 200.0
+margin_right = 360.0
+margin_bottom = 48.0
+size_flags_horizontal = 6
+text = "GPA CALCULATOR
+Version: 4.0.1"
+align = 1
+valign = 1
+
+[node name="GPADisplay" type="HBoxContainer" parent="UI/Scroll/Layout/Header"]
+margin_left = 203.0
+margin_top = 58.0
+margin_right = 357.0
+margin_bottom = 83.0
+size_flags_horizontal = 6
+
+[node name="GPALabel" type="Label" parent="UI/Scroll/Layout/Header/GPADisplay"]
+margin_right = 98.0
+margin_bottom = 25.0
+size_flags_horizontal = 10
+text = "GPA total:"
+align = 2
+
+[node name="GPATotal" type="Label" parent="UI/Scroll/Layout/Header/GPADisplay"]
+margin_left = 103.0
+margin_right = 154.0
+margin_bottom = 25.0
+size_flags_horizontal = 2
+text = "4.00"
+
+[node name="Semesters" type="VBoxContainer" parent="UI/Scroll/Layout"]
+margin_top = 93.0
+margin_right = 560.0
+margin_bottom = 93.0
+custom_constants/separation = 20
+
+[node name="Footer" type="HBoxContainer" parent="UI/Scroll/Layout"]
+margin_top = 103.0
+margin_right = 560.0
+margin_bottom = 128.0
+alignment = 1
+
+[node name="AddSemesterButton" type="Button" parent="UI/Scroll/Layout/Footer"]
+margin_left = 223.0
+margin_right = 336.0
+margin_bottom = 25.0
+size_flags_horizontal = 6
+text = "Add Semester"
+
+[connection signal="button_down" from="UI/Scroll/Layout/Footer/AddSemesterButton" to="." method="_on_AddSemesterButton_button_down"]

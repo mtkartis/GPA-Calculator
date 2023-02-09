@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Course.gd" type="Script" id=1]
+[ext_resource path="res://LightThemeComponent.tres" type="Theme" id=2]
+
+[node name="Course" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Background" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 550.0
+margin_bottom = 840.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Layout" type="HBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 550.0
+margin_bottom = 840.0
+focus_mode = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Layout"]
+margin_top = 360.0
+margin_right = 76.0
+margin_bottom = 470.0
+size_flags_vertical = 6
+
+[node name="ActiveButton" type="CheckBox" parent="Layout/Buttons"]
+margin_right = 76.0
+margin_bottom = 30.0
+pressed = true
+text = "Active"
+align = 1
+
+[node name="DuplicateButton" type="Button" parent="Layout/Buttons"]
+margin_top = 40.0
+margin_right = 76.0
+margin_bottom = 70.0
+text = "Dup"
+
+[node name="DeleteButton" type="Button" parent="Layout/Buttons"]
+margin_top = 80.0
+margin_right = 76.0
+margin_bottom = 110.0
+text = "X"
+
+[node name="CourseName" type="LineEdit" parent="Layout"]
+margin_left = 81.0
+margin_top = 400.0
+margin_right = 254.0
+margin_bottom = 430.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+align = 1
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+placeholder_text = "Name of Course"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Grade" type="OptionButton" parent="Layout"]
+margin_left = 259.0
+margin_top = 400.0
+margin_right = 432.0
+margin_bottom = 430.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="CreditBoxes" type="VBoxContainer" parent="Layout"]
+margin_left = 437.0
+margin_top = 360.0
+margin_right = 540.0
+margin_bottom = 470.0
+size_flags_vertical = 6
+
+[node name="3Credit" type="CheckBox" parent="Layout/CreditBoxes"]
+margin_right = 103.0
+margin_bottom = 30.0
+pressed = true
+text = "3 Credits"
+align = 1
+icon_align = 1
+
+[node name="6Credit" type="CheckBox" parent="Layout/CreditBoxes"]
+margin_top = 40.0
+margin_right = 103.0
+margin_bottom = 70.0
+text = "6 Credits"
+
+[node name="HalfCredit" type="CheckBox" parent="Layout/CreditBoxes"]
+margin_top = 80.0
+margin_right = 103.0
+margin_bottom = 110.0
+text = "1.5 Credits"
+align = 1
+icon_align = 1
+
+[connection signal="button_down" from="Layout/Buttons/ActiveButton" to="." method="_on_ActiveButton_button_down"]
+[connection signal="button_down" from="Layout/Buttons/DuplicateButton" to="." method="_on_DuplicateButton_button_down"]
+[connection signal="button_down" from="Layout/Buttons/DeleteButton" to="." method="_on_DeleteButton_button_down"]
+[connection signal="text_changed" from="Layout/CourseName" to="." method="_on_CourseName_text_changed"]
+[connection signal="item_selected" from="Layout/Grade" to="." method="_on_Grade_item_selected"]
+[connection signal="pressed" from="Layout/CreditBoxes/3Credit" to="." method="_on_3Credit_pressed"]
+[connection signal="pressed" from="Layout/CreditBoxes/6Credit" to="." method="_on_6Credit_pressed"]
+[connection signal="pressed" from="Layout/CreditBoxes/HalfCredit" to="." method="_on_HalfCredit_pressed"]
